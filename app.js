@@ -2,7 +2,7 @@
 
 var app         = require('express')(),
     http        = require('http').Server(app),
-    port        = 80,
+    port        = 3000,
     scraperjs   = require('scraperjs'),
     rss         = require('rss'),
     chrono      = require('chrono-node'),
