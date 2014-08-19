@@ -1,0 +1,19 @@
+{
+  "name": "scraper",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "rss": "~0.3.2",
+    "phantomjs": "~1.9.7-15",
+    "scraperjs": "~0.2.0",
+    "chrono-node": "^0.1.10",
+    "express": "^4.8.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marti Planellas",
+  "license": "CC"
+}
