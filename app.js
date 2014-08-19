@@ -8,14 +8,14 @@ var app         = require('express')(),
     chrono      = require('chrono-node'),
     feed;
 
-app.get('/feed/:tvshow/:user', function(req, res) {
-    if (typeof req.param('tvshow') === 'undefined' || typeof req.param('user') === 'undefined') {
+app.get('/feed/:tvshow/:user?', function(req, res) {
+    if (typeof req.param('tvshow') === 'undefined') {
         res.redirect('/');
         return;
     }
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl,
         tvshow = req.param('tvshow'),
-        user = req.param('user'),
+        user = req.param('user') || '',
         term = encodeURIComponent(tvshow),
         url  = 'https://thepiratebay.se/search/'+term+'/0/3/0';
 
@@ -33,7 +33,7 @@ app.get('/feed/:tvshow/:user', function(req, res) {
 
 app.get('*', function(req, res) {
     res.status(404);
-    res.send('Invalid parammeters');
+    res.send('Invalid parameters');
 });
 
 http.listen(port, function(){

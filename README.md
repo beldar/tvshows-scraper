@@ -18,7 +18,9 @@ Get
 ---
 
     /feed/tv show/user
+    /feed/tv show
 
 Example:
 
     /feed/The Strain/Drarbg
+    /feed/The Strain eztv
