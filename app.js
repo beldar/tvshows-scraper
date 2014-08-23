@@ -2,10 +2,10 @@
 
 var app         = require('express')(),
     http        = require('http').Server(app),
-    port        = 3000,
+    port        = 80,
     scraperjs   = require('scraperjs'),
     rss         = require('rss'),
-    chrono      = require('chrono-node'),
+    moment      = require('moment'),
     feed;
 
 app.get('/feed/:tvshow/:user?', function(req, res) {
@@ -53,12 +53,13 @@ function scrapUrl (url, res, user) {
 
             var author = meta.split('ULed by ')[1],
                 datestr = meta.split(',')[0].split('Uploaded ')[1].replace('Y-day', 'Yesterday'),
-                dateobj = chrono.parse(datestr)[0],
-                date = typeof dateobj !== 'undefined' ? dateobj.startDate : datestr;
+                date = datestr.match(/Yesterday/) !== null ? moment().substract('days', 1) : moment(datestr, "MM-DD HH:mm").format('LLLL');
+                //date = typeof dateobj !== 'undefined' ? dateobj.startDate : datestr;
 
             if (user !== '' && user != author)
                 return;
-
+	    
+	    //console.log('Original: '+datestr+' After:' +date);
             feed.item({
                 title: name,
                 description: name,
