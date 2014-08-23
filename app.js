@@ -53,7 +53,7 @@ function scrapUrl (url, res, user) {
 
             var author = meta.split('ULed by ')[1],
                 datestr = meta.split(',')[0].split('Uploaded ')[1].replace('Y-day', 'Yesterday'),
-                date = datestr.match(/Yesterday/) !== null ? moment().substract('days', 1) : moment(datestr, "MM-DD HH:mm").format('LLLL');
+                date = datestr.match(/Yesterday/) !== null ? moment().substract('days', 1).format('LLLL') : moment(datestr, "MM-DD HH:mm").format('LLLL');
                 //date = typeof dateobj !== 'undefined' ? dateobj.startDate : datestr;
 
             if (user !== '' && user != author)
